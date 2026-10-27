@@ -1,1 +1,297 @@
-Morrow Cafe
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF6F0">
+  <title>Morrow Café — Good coffee. Slower mornings.</title>
+  <meta name="description" content="Discover artisanal coffee, café favourites, and a welcoming space at Morrow Café in Victoria Island, Lagos.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Morrow Café — Good coffee. Slower mornings.">
+  <meta property="og:description" content="A warm café concept in Lagos for good coffee, comforting food, and unhurried moments.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { brand: {
+        50:'#FDFBF7',100:'#F7F2E9',200:'#EFE3D3',300:'#E1CDA8',400:'#CBB280',
+        500:'#9E7E49',600:'#7F6233',700:'#5F4623',800:'#3D2B14',900:'#261B0B',
+        espresso:'#1A110B',cream:'#FAF6F0',terracotta:'#C86D51'
+      }},
+      fontFamily: { serif:['"Playfair Display"','serif'], sans:['"Plus Jakarta Sans"','sans-serif'] }
+    }}};
+  </script>
+  <style>
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:#FAF6F0;color:#261B0B}
+    :focus-visible{outline:3px solid #9E7E49;outline-offset:3px}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    .font-serif-title{font-family:'Playfair Display',serif}
+    .glass-nav{background:rgba(250,246,240,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#FAF6F0}
+    ::-webkit-scrollbar-thumb{background:#CBB280;border-radius:4px}
+    .menu-card img{transition:transform .5s}.menu-card:hover img{transform:scale(1.04)}
+    /* Print only the generated order-request ticket, not the café website. */
+    @media print {
+      @page { size: auto; margin: 12mm; }
+      body * { visibility: hidden !important; }
+      #order-ticket, #order-ticket * { visibility: visible !important; }
+      #order-ticket {
+        display: block !important;
+        position: absolute !important;
+        inset: 0 auto auto 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 8mm !important;
+        border: 1px solid #d8cbb8 !important;
+        border-radius: 8px !important;
+        box-shadow: none !important;
+        background: #fff !important;
+        color: #261B0B !important;
+        break-inside: avoid;
+      }
+      #print-ticket { display: none !important; }
+      html, body { background: #fff !important; height: auto !important; overflow: visible !important; }
+    }
+  </style>
+</head>
+<body class="antialiased overflow-x-hidden bg-brand-cream text-brand-900 selection:bg-brand-300">
+<header class="fixed top-0 inset-x-0 z-50 glass-nav border-b border-brand-200/70">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="#hero" class="flex items-center gap-3 rounded-lg p-1" aria-label="Morrow Café home">
+        <div class="w-10 h-10 rounded-full bg-brand-800 text-brand-100 flex items-center justify-center font-serif text-xl font-bold">M</div>
+        <div><span class="font-serif-title text-xl font-bold block leading-none">Morrow</span><span class="text-[10px] tracking-widest uppercase text-brand-600 font-medium">Café • Lagos</span></div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+        <a href="#hero" class="text-sm hover:text-brand-500">Home</a><a href="#about" class="text-sm hover:text-brand-500">About</a>
+        <a href="#menu" class="text-sm hover:text-brand-500">Menu</a><a href="#hours" class="text-sm hover:text-brand-500">Hours</a><a href="#contact" class="text-sm hover:text-brand-500">Contact</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-4"><span id="nav-status" class="text-xs rounded-full px-3 py-2 bg-brand-100 text-brand-800">Check today's hours</span><a href="#contact" class="bg-brand-800 text-white px-5 py-3 rounded-full text-sm hover:bg-brand-900">Book a Table</a></div>
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-brand-100" aria-label="Open navigation" aria-expanded="false"><i id="menu-icon" class="fa-solid fa-bars text-xl"></i></button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-brand-cream border-t border-brand-200 px-4 py-4 space-y-2">
+    <a href="#hero" class="mobile-link block p-3 rounded-lg hover:bg-brand-100">Home</a><a href="#about" class="mobile-link block p-3 rounded-lg hover:bg-brand-100">About</a>
+    <a href="#menu" class="mobile-link block p-3 rounded-lg hover:bg-brand-100">Menu</a><a href="#hours" class="mobile-link block p-3 rounded-lg hover:bg-brand-100">Hours</a>
+    <a href="#contact" class="mobile-link block p-3 rounded-lg hover:bg-brand-100">Contact / Reserve</a>
+  </div>
+</header>
+<main class="pt-20">
+  <section id="hero" class="min-h-[90vh] flex items-center py-14 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 bg-brand-200/70 border border-brand-300 px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase"><i class="fa-solid fa-mug-saucer text-brand-600"></i> Artisanal Coffee & Breakfast</div>
+        <h1 class="font-serif-title text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-brand-espresso">Morrow Café</h1>
+        <p class="font-serif-title text-2xl sm:text-3xl italic text-brand-terracotta">“Good coffee. Slower mornings.”</p>
+        <p class="text-base sm:text-lg text-brand-700 max-w-xl leading-relaxed">A warm café concept in Lagos—a place to pause, enjoy carefully prepared coffee, and make room for a slower pace. Settle in for a coffee, a pastry, or a quiet moment.</p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-2"><a href="#menu" class="text-center px-8 py-4 rounded-full bg-brand-800 text-white hover:bg-brand-900 shadow-lg">Explore Our Menu <i class="fa-solid fa-arrow-right ml-2 text-xs"></i></a><a href="#contact" class="text-center px-8 py-4 rounded-full bg-brand-100 border border-brand-300 text-brand-800 hover:bg-brand-200">Book a Table</a></div>
+        <div class="pt-7 border-t border-brand-200 grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div class="flex gap-3 items-center"><span class="w-10 h-10 rounded-full bg-brand-200/60 flex items-center justify-center"><i class="fa-solid fa-location-dot"></i></span><div><p class="text-xs text-brand-600">Location</p><p class="text-sm font-semibold">Victoria Island, Lagos</p></div></div>
+          <div class="flex gap-3 items-center"><span class="w-10 h-10 rounded-full bg-brand-200/60 flex items-center justify-center"><i class="fa-regular fa-clock"></i></span><div><p class="text-xs text-brand-600">Hours</p><p class="text-sm font-semibold">Mon–Sat: 9am–9pm</p></div></div>
+          <div class="col-span-2 sm:col-span-1 flex gap-3 items-center"><span class="w-10 h-10 rounded-full bg-brand-200/60 flex items-center justify-center"><i class="fa-solid fa-seedling"></i></span><div><p class="text-xs text-brand-600">Our approach</p><p class="text-sm font-semibold">Made with care</p></div></div>
+        </div>
+      </div>
+      <div class="lg:col-span-5 relative max-w-lg mx-auto lg:max-w-none">
+        <div class="absolute -top-6 -right-6 w-64 h-64 bg-brand-200 rounded-full blur-2xl opacity-70"></div>
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-brand-100">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80" alt="Warm café interior" class="w-full h-[430px] object-cover" onerror="this.style.display='none'">
+          <div class="absolute bottom-5 left-5 right-5 bg-brand-cream/90 backdrop-blur p-4 rounded-2xl shadow-lg"><p class="font-serif-title italic text-sm">“A little pause in the middle of a busy day.”</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="about" class="py-20 bg-brand-100/60 border-y border-brand-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="grid grid-cols-2 gap-4">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80" alt="Coffee preparation" class="rounded-2xl shadow-md w-full h-64 object-cover">
+        <div class="bg-brand-800 text-brand-100 p-6 rounded-2xl flex flex-col justify-center text-center mt-8"><i class="fa-solid fa-mug-hot text-3xl text-brand-300 mb-3"></i><span class="font-serif-title text-2xl">Thoughtfully made</span><span class="text-xs mt-2 text-brand-200">Every cup, a moment to enjoy</span></div>
+        <div class="bg-brand-terracotta text-white p-6 rounded-2xl flex flex-col justify-center text-center"><i class="fa-solid fa-sun text-3xl mb-3"></i><span class="font-serif-title text-xl">Slow mornings</span><span class="text-xs mt-2">Crafted with care</span></div>
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Cozy café table setting" class="rounded-2xl shadow-md w-full h-64 object-cover">
+      </div>
+      <div class="space-y-5"><p class="text-brand-terracotta text-xs font-bold tracking-[.25em] uppercase">Our Story</p><h2 class="font-serif-title text-3xl sm:text-4xl font-bold">A little space to slow down</h2><p class="text-brand-700 leading-relaxed">Morrow Café is built around a simple idea: make room for good coffee, comforting food, and unhurried moments.</p><p class="text-brand-700 leading-relaxed">Whether you're meeting a friend, catching up on work, or enjoying a quiet moment alone, we want the experience to feel warm, welcoming, and easy.</p>
+        <div class="grid sm:grid-cols-2 gap-4 pt-2"><div class="p-4 rounded-xl bg-brand-cream border border-brand-200"><p class="font-bold text-brand-700 mb-1"><i class="fa-solid fa-leaf mr-2"></i>Carefully prepared</p><p class="text-sm text-brand-700">Coffee and café favourites made with care.</p></div><div class="p-4 rounded-xl bg-brand-cream border border-brand-200"><p class="font-bold text-brand-700 mb-1"><i class="fa-solid fa-heart mr-2"></i>Welcoming atmosphere</p><p class="text-sm text-brand-700">A comfortable spot for conversation or calm.</p></div></div>
+      </div>
+    </div>
+  </section>
+  <section id="menu" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12"><p class="text-brand-terracotta text-xs font-bold tracking-[.25em] uppercase mb-3">A taste of Morrow</p><h2 class="font-serif-title text-3xl sm:text-4xl font-bold">Made for your moment</h2><p class="mt-4 text-brand-700">Choose your favourites and send your collection request to us on WhatsApp. All listed prices are draft estimates and must be confirmed by the café before launch.</p></div>
+      <div class="flex flex-wrap justify-center gap-2 mb-8"><button class="menu-filter rounded-full px-4 py-2 bg-brand-800 text-white text-sm" data-filter="All">All</button><button class="menu-filter rounded-full px-4 py-2 bg-brand-100 text-brand-800 text-sm" data-filter="Coffee">Coffee</button><button class="menu-filter rounded-full px-4 py-2 bg-brand-100 text-brand-800 text-sm" data-filter="Pastries">Pastries</button><button class="menu-filter rounded-full px-4 py-2 bg-brand-100 text-brand-800 text-sm" data-filter="Meals">Meals</button><button class="menu-filter rounded-full px-4 py-2 bg-brand-100 text-brand-800 text-sm" data-filter="Desserts">Desserts</button><button class="menu-filter rounded-full px-4 py-2 bg-brand-100 text-brand-800 text-sm" data-filter="Cold drinks">Cold drinks</button></div>
+      <div id="menu-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <section id="order" class="mt-14 grid lg:grid-cols-5 gap-8 items-start">
+        <div class="lg:col-span-3 bg-white border border-brand-200 rounded-2xl p-6 sm:p-8 shadow-sm"><div class="flex items-center justify-between gap-4 mb-5"><div><p class="text-brand-terracotta text-xs font-bold tracking-[.2em] uppercase">Your order</p><h3 class="font-serif-title text-2xl font-bold mt-1">Collection basket</h3></div><span id="cart-count" class="rounded-full bg-brand-100 px-3 py-2 text-sm font-semibold">0 items</span></div><div id="cart-items" class="space-y-4"><p class="text-sm text-brand-600">Your basket is empty. Add something from the menu above.</p></div><div class="flex justify-between border-t border-brand-200 mt-6 pt-5 text-lg font-bold"><span>Total</span><span id="cart-total">₦0</span></div><p class="text-xs text-brand-600 mt-2">Your request is sent to the café through WhatsApp. Payment is arranged directly with the café; this website does not collect money.</p></div>
+        <form id="checkout-form" class="lg:col-span-2 bg-brand-100/70 border border-brand-200 rounded-2xl p-6 sm:p-8 space-y-4"><p class="text-brand-terracotta text-xs font-bold tracking-[.2em] uppercase">Next step</p><h3 class="font-serif-title text-2xl font-bold">Arrange collection</h3><p class="text-sm text-brand-700">Enter your details and preferred collection time. WhatsApp will open with your order for you to send to the café.</p><label class="block text-sm font-medium">Full name<input id="order-name" required autocomplete="name" class="mt-2 w-full rounded-xl border border-brand-300 px-4 py-3 bg-white" placeholder="Your full name"></label><label class="block text-sm font-medium">Phone number<input id="order-phone" required type="tel" autocomplete="tel" class="mt-2 w-full rounded-xl border border-brand-300 px-4 py-3 bg-white" placeholder="Your phone number"></label><label class="block text-sm font-medium">Collection date<input id="pickup-date" required type="date" class="mt-2 w-full rounded-xl border border-brand-300 px-4 py-3 bg-white"></label><label class="block text-sm font-medium">Collection time<select id="pickup-time" required class="mt-2 w-full rounded-xl border border-brand-300 px-4 py-3 bg-white"><option value="">Choose a time</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM</option><option>7:00 PM</option><option>8:00 PM</option></select></label><label class="block text-sm font-medium">Order notes (optional)<textarea id="order-notes" rows="2" class="mt-2 w-full rounded-xl border border-brand-300 px-4 py-3 bg-white" placeholder="Anything we should know?"></textarea></label><button type="submit" class="w-full bg-brand-800 text-white rounded-full py-3 px-6 hover:bg-brand-900"><i class="fa-brands fa-whatsapp mr-2"></i>Send order on WhatsApp</button><p class="text-xs text-brand-700">No payment is taken online. Your order is not accepted until the café confirms it.</p></form>
+      </section>
+      <div id="order-ticket" class="hidden mt-8 bg-white border border-brand-300 rounded-2xl p-6 sm:p-8" aria-live="polite"></div>
+    </div>
+  </section>
+  <section id="hours" class="py-20 bg-brand-800 text-brand-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
+      <div><p class="text-brand-300 text-xs font-bold tracking-[.25em] uppercase mb-3">Plan your visit</p><h2 class="font-serif-title text-3xl sm:text-4xl font-bold">Come by when you need a pause.</h2><p class="mt-4 text-brand-100/80 leading-relaxed">Check the hours before visiting. Open Monday to Saturday, 9:00 AM to 9:00 PM. Reservations are subject to café confirmation.</p></div>
+      <div class="bg-white/5 border border-white/15 rounded-2xl p-6"><div class="flex justify-between py-3 border-b border-white/15"><span>Monday – Saturday</span><strong>9:00 AM – 9:00 PM</strong></div><div class="flex justify-between py-3"><span>Sunday</span><strong>Closed</strong></div><p class="text-xs text-brand-200 mt-3">Closed on Sundays. Public holiday hours may vary.</p></div>
+    </div>
+  </section>
+  <section id="contact" class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-start">
+      <div><p class="text-brand-terracotta text-xs font-bold tracking-[.25em] uppercase mb-3">Visit us in person</p><h2 class="font-serif-title text-3xl sm:text-4xl font-bold">Book your table at Morrow.</h2><p class="text-brand-700 mt-4 leading-relaxed">Reserve a table for your visit. Booking is free; food and drinks are paid for at the café. Your request is not confirmed until our team replies.</p>
+        <div class="mt-7 space-y-4">
+          <p class="flex gap-3 items-center"><span class="w-10 h-10 rounded-full bg-brand-200 flex items-center justify-center"><i class="fa-solid fa-location-dot"></i></span><span>Victoria Island, Lagos <span class="block text-xs text-brand-600">Exact street address to be confirmed</span></span></p>
+          <p class="flex gap-3 items-center"><span class="w-10 h-10 rounded-full bg-brand-200 flex items-center justify-center"><i class="fa-solid fa-phone"></i></span><a href="tel:+2348050620968" class="hover:underline">0805 062 0968</a></p>
+          <p class="flex gap-3 items-center"><span class="w-10 h-10 rounded-full bg-brand-200 flex items-center justify-center"><i class="fa-regular fa-envelope"></i></span><a href="mailto:bhigfhavee@gmail.com" class="hover:underline">bhigfhavee@gmail.com</a></p>
+          <p class="flex gap-3 items-center"><span class="w-10 h-10 rounded-full bg-brand-200 flex items-center justify-center"><i class="fa-brands fa-instagram"></i></span><a href="https://www.instagram.com/bhig_fhavee/" target="_blank" rel="noopener noreferrer" class="hover:underline">@bhig_fhavee on Instagram</a></p>
+          <a href="https://wa.me/2348050620968" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-2 bg-green-700 text-white px-5 py-3 rounded-full hover:bg-green-800"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+        </div>
+      </div>
+      <form id="booking-form" class="bg-white border border-brand-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+        <h3 class="font-serif-title text-2xl font-bold">Book a Table</h3>
+        <p class="text-sm text-brand-700">Free reservation · Pay for food and drinks at the café. Please wait for the café to confirm your request.</p>
+        <label class="block text-sm font-medium">Full name<input id="booking-name" required autocomplete="name" class="mt-2 w-full rounded-xl border border-brand-300 px-4 py-3 bg-brand-50 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="Your full name"></label>
+        <label class="block text-sm font-medium">Phone number<input id="booking-phone" required type="tel" autocomplete="tel" class="mt-2 w-full rounded-xl border border-brand-300 px-4 py-3 bg-brand-50 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="Your phone number"></label>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label class="block text-sm font-medium">Number of guests<select id="booking-guests" required class="mt-2 w-full rounded-xl border border-brand-300 px-4 py-3 bg-brand-50"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option><option value="7+">7 or more</option></select></label>
+          <label class="block text-sm font-medium">Date<input id="booking-date" type="date" required class="mt-2 w-full rounded-xl border border-brand-300 px-4 py-3 bg-brand-50"></label>
+        </div>
+        <label class="block text-sm font-medium">Preferred time<select id="booking-time" required class="mt-2 w-full rounded-xl border border-brand-300 px-4 py-3 bg-brand-50"><option value="">Choose a time</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM</option><option>7:00 PM</option><option>8:00 PM</option></select></label>
+        <label class="block text-sm font-medium">Special request (optional)<textarea id="booking-notes" rows="3" class="mt-2 w-full rounded-xl border border-brand-300 px-4 py-3 bg-brand-50 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="Any seating preference? (optional)"></textarea></label>
+        <button class="w-full bg-brand-800 text-white rounded-full py-3 px-6 hover:bg-brand-900" type="submit">Request a Booking <i class="fa-solid fa-arrow-right ml-2"></i></button>
+        <p class="text-xs text-brand-600">Your booking request is sent to the café notification service when you submit this form, and WhatsApp also opens with a message you can send. The booking is only confirmed after the café replies.</p><p id="booking-submit-status" class="text-sm mt-2" aria-live="polite"></p>
+      </form>
+      <div id="booking-ticket" class="hidden md:col-span-2 bg-brand-100 border border-brand-300 rounded-2xl p-6" aria-live="polite"></div>
+    </div>
+  </section>
+</main>
+<footer class="bg-brand-900 text-brand-100 py-8"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row gap-4 justify-between items-center"><div><p class="font-serif-title text-xl font-bold">Morrow Café</p><p class="text-xs text-brand-300 mt-1">Good coffee. Slower mornings.</p></div><p class="text-xs text-brand-300">© <span id="year"></span> Morrow Café. Orders and reservations require café confirmation.</p><a href="#hero" class="text-sm hover:text-brand-300">Back to top ↑</a></div></footer>
+<script>
+  const menuButton=document.getElementById('mobile-menu-btn');
+  const mobileMenu=document.getElementById('mobile-menu');
+  const menuIcon=document.getElementById('menu-icon');
+  menuButton.addEventListener('click',()=>{
+    const isHidden=mobileMenu.classList.toggle('hidden');
+    menuButton.setAttribute('aria-expanded',String(!isHidden));
+    menuIcon.className=isHidden?'fa-solid fa-bars text-xl':'fa-solid fa-xmark text-xl';
+  });
+  document.querySelectorAll('.mobile-link').forEach(link=>link.addEventListener('click',()=>{
+    mobileMenu.classList.add('hidden');menuButton.setAttribute('aria-expanded','false');menuIcon.className='fa-solid fa-bars text-xl';
+  }));
+  document.getElementById('year').textContent=new Date().getFullYear();
+  // The displayed open/closed message is informational only; it does not check live availability.
+  const now=new Date(new Date().toLocaleString('en-US',{timeZone:'Africa/Lagos'}));const day=now.getDay();const hour=now.getHours();
+  const isListedOpen=day>=1&&day<=6&&hour>=9&&hour<21;
+  document.getElementById('nav-status').textContent=isListedOpen?'Listed hours: open now':'Mon–Sat, 9 AM–9 PM';
+  // Menu and cart are local to this browser; no order is sent to a server.
+  const menuItems = [
+    {id:'espresso',name:'Espresso',category:'Coffee',price:1500,desc:'A bold, concentrated coffee shot.',img:'photo-1510707577719-ae7c14805e3a'},
+    {id:'iced-latte',name:'Iced Latte',category:'Cold drinks',price:2500,desc:'Chilled espresso and smooth milk over ice.',img:'photo-1461023058943-07fcbe16d735'},
+    {id:'croissant',name:'Butter Croissant',category:'Pastries',price:1800,desc:'A buttery, flaky café favourite.',img:'photo-1555507036-ab1f4038808a'},
+    {id:'breakfast',name:'House Breakfast',category:'Meals',price:4500,desc:'A comforting breakfast plate.',img:'photo-1533089860892-a7c6f0a88666'},
+    {id:'americano',name:'Americano',category:'Coffee',price:2500,desc:'Espresso topped with hot water.',img:'photo-1509042239860-f550ce710b93'},
+    {id:'cappuccino',name:'Cappuccino',category:'Coffee',price:3000,desc:'Espresso with steamed milk and foam.',img:'photo-1570968915860-54d5c301fa9f'},
+    {id:'mocha',name:'Mocha',category:'Coffee',price:3500,desc:'Coffee with chocolate and milk.',img:'photo-1517701604599-bb29b565090c'},
+    {id:'muffin',name:'Chocolate Muffin',category:'Pastries',price:2000,desc:'A soft chocolate treat.',img:'photo-1607958996333-41aef7caefaa'},
+    {id:'roll',name:'Cinnamon Roll',category:'Pastries',price:2500,desc:'Sweet cinnamon pastry.',img:'photo-1509365465985-25d11c17e812'},
+    {id:'sandwich',name:'Chicken Sandwich',category:'Meals',price:4500,desc:'A café-style sandwich with chicken.',img:'photo-1528735602780-2552fd46c7af'},
+    {id:'fries',name:'French Fries',category:'Meals',price:2500,desc:'Golden, crisp fries.',img:'photo-1573080496219-bb080dd4f877'},
+    {id:'cake',name:'Chocolate Cake',category:'Desserts',price:3000,desc:'Rich chocolate cake.',img:'photo-157898 стоит'},
+    {id:'brownie',name:'Chocolate Brownie',category:'Desserts',price:2000,desc:'A fudgy chocolate square.',img:'photo-1606313564200-e75d5e30476c'},
+    {id:'lemonade',name:'Fresh Lemonade',category:'Cold drinks',price:2000,desc:'A bright, refreshing citrus drink.',img:'photo-1513558161293-caad1e6c9f4d'}
+  ];
+  // Fix an image identifier typo in this practice-only menu entry.
+  menuItems.find(item=>item.id==='cake').img='photo-1578985545062-69928b1d9587';
+  const cart = {};
+  const naira = amount => '₦' + amount.toLocaleString('en-NG');
+  const menuGrid = document.getElementById('menu-grid');
+  function renderMenu(filter='All') {
+    menuGrid.innerHTML = menuItems.filter(item=>filter==='All'||item.category===filter).map(item=>`<article class="menu-card bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm"><div class="overflow-hidden"><img src="https://images.unsplash.com/${item.img}?auto=format&fit=crop&w=700&q=80" alt="${item.name}" loading="lazy" class="w-full h-48 object-cover" onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80'"></div><div class="p-5"><div class="flex justify-between gap-3 items-start"><h3 class="font-serif-title text-xl font-bold">${item.name}</h3><span class="text-brand-600 font-semibold whitespace-nowrap">${naira(item.price)}</span></div><p class="text-sm text-brand-700 mt-2">${item.desc}</p><p class="text-[11px] mt-3 text-brand-500">DRAFT PRICE — confirm before launch</p><button type="button" data-add="${item.id}" class="mt-4 w-full rounded-full bg-brand-800 text-white py-2.5 hover:bg-brand-900"><i class="fa-solid fa-plus mr-2"></i>Add to order</button></div></article>`).join('');
+  }
+  function renderCart(){
+    const entries=Object.entries(cart).filter(([id,qty])=>qty>0);
+    const count=entries.reduce((sum,[id,qty])=>sum+qty,0);
+    const total=entries.reduce((sum,[id,qty])=>sum+menuItems.find(i=>i.id===id).price*qty,0);
+    document.getElementById('cart-count').textContent=`${count} item${count===1?'':'s'}`;
+    document.getElementById('cart-total').textContent=naira(total);
+    document.getElementById('cart-items').innerHTML=entries.length?entries.map(([id,qty])=>{const item=menuItems.find(i=>i.id===id);return `<div class="flex items-center justify-between gap-3 border-b border-brand-100 pb-3"><div><p class="font-semibold">${item.name}</p><p class="text-sm text-brand-600">${naira(item.price)} each</p></div><div class="flex items-center gap-3"><button type="button" data-change="${id}" data-delta="-1" class="w-8 h-8 rounded-full border border-brand-300" aria-label="Remove one ${item.name}">−</button><span class="font-semibold">${qty}</span><button type="button" data-change="${id}" data-delta="1" class="w-8 h-8 rounded-full border border-brand-300" aria-label="Add one ${item.name}">+</button></div><strong>${naira(item.price*qty)}</strong></div>`}).join(''):'<p class="text-sm text-brand-600">Your basket is empty. Add something from the menu above.</p>';
+  }
+  menuGrid.addEventListener('click',event=>{const button=event.target.closest('[data-add]');if(!button)return;const id=button.dataset.add;cart[id]=(cart[id]||0)+1;renderCart();document.getElementById('order').scrollIntoView({behavior:'smooth',block:'start'});});
+  document.getElementById('cart-items').addEventListener('click',event=>{const button=event.target.closest('[data-change]');if(!button)return;const id=button.dataset.change;cart[id]=(cart[id]||0)+Number(button.dataset.delta);if(cart[id]<=0)delete cart[id];renderCart();});
+  document.querySelectorAll('.menu-filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.menu-filter').forEach(b=>{b.className='menu-filter rounded-full px-4 py-2 bg-brand-100 text-brand-800 text-sm'});button.className='menu-filter rounded-full px-4 py-2 bg-brand-800 text-white text-sm';renderMenu(button.dataset.filter);}));
+  renderMenu();renderCart();
+  const pickupDate=document.getElementById('pickup-date');
+  const localToday=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);pickupDate.min=localToday;
+  document.getElementById('checkout-form').addEventListener('submit',event=>{
+    event.preventDefault();
+    const entries=Object.entries(cart).filter(([id,qty])=>qty>0);
+    if(!entries.length){alert('Please add at least one item to your order first.');return;}
+    const dateValue=pickupDate.value;
+    const date=new Date(dateValue+'T12:00:00');
+    if(!dateValue || Number.isNaN(date.getTime())){alert('Please choose a valid collection date.');return;}
+    if(date.getDay()===0){alert('Morrow Café is listed as closed on Sundays. Please choose Monday to Saturday.');return;}
+    const name=document.getElementById('order-name').value.trim();
+    const phone=document.getElementById('order-phone').value.trim();
+    const time=document.getElementById('pickup-time').value;
+    const notes=document.getElementById('order-notes').value.trim();
+    const total=entries.reduce((sum,[id,qty])=>sum+menuItems.find(i=>i.id===id).price*qty,0);
+    const ref='MOR-'+Date.now().toString().slice(-6);
+    const formatted=date.toLocaleDateString('en-NG',{day:'numeric',month:'long',year:'numeric'});
+    const orderLines=entries.map(([id,qty])=>{const item=menuItems.find(i=>i.id===id);return `${qty} x ${item.name} — ${naira(item.price*qty)} (draft price)`;}).join('\n');
+    const message=`Hello Morrow Café, I would like to request a collection order.\nOrder reference: ${ref}\nName: ${name}\nPhone: ${phone}\nCollection date: ${formatted}\nCollection time: ${time}\n\nItems:\n${orderLines}\n\nEstimated total: ${naira(total)} (draft prices; please confirm)\nOrder notes: ${notes||'None'}\nPlease confirm availability, final prices, and payment/collection arrangements. I understand this order is not confirmed until your team replies. No online payment has been made.`;
+    // Request an automatic owner alert from the server, independently of the customer's WhatsApp send action.
+    fetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref,name,phone,pickupDate:formatted,pickupTime:time,items:orderLines,total:naira(total),notes:notes||'None'})})
+      .then(async response=>{const result=await response.json().catch(()=>({}));if(!response.ok)throw new Error(result.error||'Automatic alert is not configured.');return true;})
+      .catch(()=>{const status=document.getElementById('order-notification-status');if(status)status.textContent='Automatic alert is not active yet. Please send the order through WhatsApp; the café must confirm it.';});
+    const ticket=document.getElementById('order-ticket');
+    ticket.classList.remove('hidden');
+    ticket.innerHTML=`<div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4"><div><p class="text-brand-terracotta text-xs font-bold tracking-[.2em] uppercase">Order request</p><h3 class="font-serif-title text-2xl font-bold mt-1">Your order message is ready</h3><p class="text-sm text-brand-700 mt-2">Reference: <strong>${escapeHtml(ref)}</strong></p></div><span class="inline-flex self-start rounded-full bg-yellow-100 text-yellow-900 px-3 py-2 text-xs font-bold">AWAITING CONFIRMATION</span></div><div class="grid sm:grid-cols-2 gap-3 mt-5 text-sm"><p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Phone:</strong> ${escapeHtml(phone)}</p><p><strong>Collection date:</strong> ${escapeHtml(formatted)}</p><p><strong>Collection time:</strong> ${escapeHtml(time)}</p></div><ul class="list-disc pl-5 mt-5 space-y-2 text-sm">${entries.map(([id,qty])=>{const item=menuItems.find(i=>i.id===id);return `<li>${qty} × ${escapeHtml(item.name)} — ${naira(item.price*qty)} <span class="text-brand-500">(draft price)</span></li>`}).join('')}</ul><p class="border-t border-brand-200 mt-5 pt-4 text-lg font-bold">Estimated total: ${naira(total)}</p><p class="mt-3 text-sm text-brand-700">${notes?'Order notes: '+escapeHtml(notes)+'<br>':''}WhatsApp will open with your message. Tap Send in WhatsApp to submit it. The café must confirm the order and final prices. No payment has been taken.</p><a id="send-order-whatsapp" href="https://wa.me/2348050620968?text=${encodeURIComponent(message)}" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center rounded-full bg-green-700 text-white px-5 py-3"><i class="fa-brands fa-whatsapp mr-2"></i>Open WhatsApp to send order</a>`;
+    ticket.insertAdjacentHTML('beforeend','<p id="order-notification-status" class="mt-3 text-xs text-brand-600" aria-live="polite">Automatic alert will be attempted in the background; WhatsApp must still be sent by the customer.</p>');
+    cart && Object.keys(cart).forEach(id=>delete cart[id]);
+    renderCart();
+    ticket.scrollIntoView({behavior:'smooth',block:'center'});
+    window.open('https://wa.me/2348050620968?text='+encodeURIComponent(message),'_blank','noopener');
+  });
+
+  const dateInput=document.getElementById('booking-date');
+  const today=new Date();
+  const localDate=new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().slice(0,10);
+  dateInput.min=localDate;
+  document.getElementById('booking-form').addEventListener('submit',function(event){
+    event.preventDefault();
+    const name=document.getElementById('booking-name').value.trim();
+    const phone=document.getElementById('booking-phone').value.trim();
+    const guests=document.getElementById('booking-guests').value;
+    const date=document.getElementById('booking-date').value;
+    const time=document.getElementById('booking-time').value;
+    const notes=document.getElementById('booking-notes').value.trim();
+    const chosenDate=new Date(date+'T12:00:00');
+    if(chosenDate.getDay()===0){alert('Morrow Café is listed as closed on Sundays. Please choose Monday to Saturday.');return;}
+    const ref='MOR-'+Date.now().toString().slice(-6);
+    const formattedDate=chosenDate.toLocaleDateString('en-NG',{day:'numeric',month:'long',year:'numeric'});
+    const message=`Hello Morrow Café, I would like to request a table booking.
+Booking reference: ${ref}
+Name: ${name}
+Phone: ${phone}
+Guests: ${guests}
+Date: ${formattedDate}
+Time: ${time}
+Special request: ${notes||'None'}
+Please confirm availability. I understand this request is not confirmed until your team replies. Food and drinks will be paid for at the café.`;
+    // Send booking to the server for an automatic notification, even if WhatsApp is not sent.
+    const notificationStatus=document.getElementById('booking-submit-status');
+    notificationStatus.textContent='Submitting booking request to the café…';
+    notificationStatus.className='text-sm mt-2 text-brand-700';
+    fetch('/api/bookings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref,name,phone,guests,date:formattedDate,time,notes:notes||'None'})})
+      .then(async response=>{const result=await response.json().catch(()=>({}));if(!response.ok)throw new Error(result.error||'Notification service is not configured yet.');notificationStatus.textContent='Booking request sent to the café notification service. Please also send the WhatsApp message if prompted.';notificationStatus.className='text-sm mt-2 text-green-700';})
+      .catch(()=>{notificationStatus.textContent='WhatsApp message is ready. Automatic notification will work after the website backend is deployed and configured.';notificationStatus.className='text-sm mt-2 text-amber-700';});
+    const ticket=document.getElementById('booking-ticket');
+    ticket.classList.remove('hidden');
+    ticket.innerHTML=`<h3 class="font-serif-title text-2xl font-bold mb-3">Booking request prepared</h3><p class="mb-4 text-sm">Reference: <strong>${ref}</strong></p><div class="grid sm:grid-cols-2 gap-2 text-sm"><p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Guests:</strong> ${escapeHtml(guests)}</p><p><strong>Date:</strong> ${escapeHtml(formattedDate)}</p><p><strong>Time:</strong> ${escapeHtml(time)}</p></div><p class="mt-4 font-semibold text-brand-700">Status: Awaiting café confirmation</p><p class="mt-1 text-sm">WhatsApp will open so you can send the request to the café. Keep this reference for your records.</p>`;
+    window.open('https://wa.me/2348050620968?text='+encodeURIComponent(message),'_blank','noopener');
+    ticket.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  function escapeHtml(value){return String(value).replace(/[&<>"']/g,character=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));}
+</script>
+</body>
+</html>
