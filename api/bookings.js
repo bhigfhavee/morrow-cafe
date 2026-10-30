@@ -36,7 +36,7 @@ export default async function handler(req, res) {
             components: [{
               type: "body",
               parameters: [
-                ref, name, phone, date, time, guests, notes || "None"
+           [ref, name, phone, guests, date, time, notes || "None"]
               ].map(value => ({
                 type: "text",
                 text: String(value || "None")
